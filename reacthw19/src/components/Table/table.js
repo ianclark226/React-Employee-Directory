@@ -1,16 +1,28 @@
-import React from "react";
+import React from 'react';
 
-import data from "../../data.json";
-import TableRow from "./components/TableRow/tableRow";
+import data from '../../data.json';
+import TableRow from './components/TableRow/tableRow';
+import TableHeader from './components/TableHeader/tableHeader';
+import { EventContext } from './tableContext';
 
 export default function Table() {
-  console.log(data);
+  const handleTableHeaderClick = (event) => {
+      console.log(event.current);
+
+  }
+
+  const EventContext = {
+      onTableHeaderClick: handleTableHeaderClick
+  };
+
   return (
+      <EventContext.Provider value= {} >
     <table border={1}>
       <thread>
         <tr>
             <TableHeader 
             text="Name"
+            sort={}
             />
              <TableHeader 
             text="Email"
@@ -34,5 +46,6 @@ export default function Table() {
         }
       </tbody>
     </table>
+    </EventContext.Provider>
   )
 }
