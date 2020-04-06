@@ -1,6 +1,7 @@
 import React from "react";
 
 import data from "../../data.json";
+import TableRow from "./components/TableRow/tableRow";
 
 export default function Table() {
   console.log(data);
@@ -8,22 +9,29 @@ export default function Table() {
     <table border={1}>
       <thread>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Nationality</th>
+            <TableHeader 
+            text="Name"
+            />
+             <TableHeader 
+            text="Email"
+            />
+             <TableHeader 
+            text="Phone"
+            />
+             <TableHeader 
+            text="Nationality"
+            />
+        
         </tr>
       </thread>
       <tbody>
-        {data.map(({ name, email, phone, nat }) => (
-          <tr key={id.value}
-          >
-            <td>{`${name.first} ${name.last}`}</td>
-            <td>{email}</td>
-            <td>{phone}</td>
-            <td>{nat}</td>
-          </tr>
-        ))}
+        {data.map((person) => (
+        <TableRow
+        key={person.phone}
+        person={person}
+        />
+        ))
+        }
       </tbody>
     </table>
   )
