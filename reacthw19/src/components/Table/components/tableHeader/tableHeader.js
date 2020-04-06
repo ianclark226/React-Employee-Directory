@@ -3,9 +3,9 @@ import { EventContext, TableContext } from '../../tableContext';
 
 export default function TableHeader(props) {
     const tableContext = React.useContext(TableContext);
-    const EventContext = React.useContext(EventContext);
+    const eventContext = React.useContext(EventContext);
 
-    console.log(context);
+    
 
      const {
          text
@@ -18,7 +18,7 @@ export default function TableHeader(props) {
      return (
          <th
          data-id={text}
-         onClick ={ context.onTableHeaderClick }
+         onClick ={eventContext.onTableHeaderClick }
          >
              {text}
              { sortBy === text && 'sorted'}

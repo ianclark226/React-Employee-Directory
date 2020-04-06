@@ -20,12 +20,12 @@ export default function Table() {
       sortBy,
   }
 
-  const EventContext = {
+  const eventContext = {
       onTableHeaderClick: handleTableHeaderClick
   };
 
   let sortedData = [...data];
-  if(sortBy) {
+  
       switch (sortBy) {
           case "Name":
             sortedData = sortedData.sort((a, b) => {
@@ -50,7 +50,7 @@ export default function Table() {
 
           default:
               break;
-      }
+      
   }
 
   return (
