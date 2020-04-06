@@ -24,6 +24,35 @@ export default function Table() {
       onTableHeaderClick: handleTableHeaderClick
   };
 
+  let sortedData = [...data];
+  if(sortBy) {
+      switch (sortBy) {
+          case "Name":
+            sortedData = sortedData.sort((a, b) => {
+                const aName = `${a.name.first} ${a.name.last}`;
+                const bName = `${b.name.first} ${b.name.last}`;
+                return aName.localeCompare(bName);
+            })
+          break;
+          case "Email":
+              sortedData = sortedData.sort((a, b) => a.email.localeCompare(b.email));
+
+            break;
+            case "Phone":
+                sortedData = sortedData.sort((a, b) => a.phone.localeCompare(b.phone));
+
+                break;
+                case "Nationality":
+                    sortedData = sortedData.sort((a, b) => a.nat.localeCompare(b.nat));
+
+                    break;
+
+
+          default:
+              break;
+      }
+  }
+
   return (
       <TableContext.Provider value= {tableContext} >
         <EventContext.Provider value= {eventContext} >
@@ -32,7 +61,7 @@ export default function Table() {
         <tr>
             <TableHeader 
             text="Name"
-            sort={}
+            
             />
              <TableHeader 
             text="Email"
@@ -47,13 +76,14 @@ export default function Table() {
         </tr>
       </thread>
       <tbody>
-        {data.map((person) => (
+        {sortedData.map((person) => (
         <TableRow
         key={person.phone}
         person={person}
         />
         ))
-        }
+}
+        
       </tbody>
     </table>
     </EventContext.Provider>
