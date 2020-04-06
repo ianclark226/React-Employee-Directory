@@ -3,12 +3,21 @@ import React from 'react';
 import data from '../../data.json';
 import TableRow from './components/TableRow/tableRow';
 import TableHeader from './components/TableHeader/tableHeader';
-import { EventContext } from './tableContext';
+import { EventContext, TableContext } from './tableContext';
 
 export default function Table() {
+    const [sortBy, setSortBy] = React.useState();
   const handleTableHeaderClick = (event) => {
-      console.log(event.current);
+      const target = event.currentTarget;
+      const id = target.getAttribute('id');
 
+      setSortBy(id);
+      
+
+  }
+
+  const tableContext = {
+      sortBy,
   }
 
   const EventContext = {
@@ -16,7 +25,8 @@ export default function Table() {
   };
 
   return (
-      <EventContext.Provider value= {} >
+      <TableContext.Provider value= {tableContext} >
+        <EventContext.Provider value= {eventContext} >
     <table border={1}>
       <thread>
         <tr>
@@ -47,5 +57,6 @@ export default function Table() {
       </tbody>
     </table>
     </EventContext.Provider>
+    </TableContext.Provider>
   )
 }
