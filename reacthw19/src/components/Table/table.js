@@ -49,29 +49,30 @@ export default function Table() {
 
   let toBeDisplayedData = [...data];
 
-  if(searchText !== '');
+  if(searchText !== '') {
   toBeDisplayedData = toBeDisplayedData.filter(({email}) => new RegExp(searchText, 'g').test(email));
+  }
 
   const sortOrderModifier = sortOrder === 'ASC' ? 1 : -1;
   
       switch (sortBy) {
           case "Name":
-            sortedData = sortedData.sort((a, b) => {
+            toBeDisplayedData = toBeDisplayedData.sort((a, b) => {
                 const aName = `${a.name.first} ${a.name.last}`;
                 const bName = `${b.name.first} ${b.name.last}`;
                 return aName.localeCompare(bName) * sortOrderModifier;
             })
           break;
           case "Email":
-              sortedData = sortedData.sort((a, b) => a.email.localeCompare(b.email)) * sortOrderModifier;
+              toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.email.localeCompare(b.email)) * sortOrderModifier;
 
             break;
             case "Phone":
-                sortedData = sortedData.sort((a, b) => a.phone.localeCompare(b.phone)) * sortOrderModifier;
+                toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.phone.localeCompare(b.phone)) * sortOrderModifier;
 
                 break;
                 case "Nationality":
-                    sortedData = sortedData.sort((a, b) => a.nat.localeCompare(b.nat)) * sortOrderModifier;
+                    toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.nat.localeCompare(b.nat)) * sortOrderModifier;
 
                     break;
 
@@ -104,7 +105,7 @@ export default function Table() {
         </tr>
       </thread>
       <tbody>
-        {sortedData.map((person) => (
+        {toBeDisplayedData.map((person) => (
         <TableRow
         key={person.phone}
         person={person}

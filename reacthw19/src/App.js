@@ -15,7 +15,7 @@ export default function App() {
     setSearchText(event.currentTarget.value);
   }
 
-  const AppContext = {
+  const appContext = {
     searchText,
   }
 
