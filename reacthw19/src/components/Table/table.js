@@ -11,7 +11,7 @@ export default function Table() {
     const [sortBy, setSortBy] = React.useState();
     const [sortOrder, setSortOrder] = React.useState();
 
-    const searchText = React.useContext(AppContext); 
+    const {searchText} = React.useContext(AppContext); 
 
   const handleTableHeaderClick = (event) => {
       const target = event.currentTarget;
@@ -31,8 +31,9 @@ export default function Table() {
                       break;
           }
       } else {
+        setSortBy(id);
         setSortOrder('ASC');
-      setSortBy(id);
+      
       }
       
 
@@ -64,15 +65,15 @@ export default function Table() {
             })
           break;
           case "Email":
-              toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.email.localeCompare(b.email)) * sortOrderModifier;
+              toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.email.localeCompare(b.email) * sortOrderModifier)
 
             break;
             case "Phone":
-                toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.phone.localeCompare(b.phone)) * sortOrderModifier;
+                toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.phone.localeCompare(b.phone) * sortOrderModifier)
 
                 break;
                 case "Nationality":
-                    toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.nat.localeCompare(b.nat)) * sortOrderModifier;
+                    toBeDisplayedData = toBeDisplayedData.sort((a, b) => a.nat.localeCompare(b.nat) * sortOrderModifier)
 
                     break;
 
@@ -85,7 +86,9 @@ export default function Table() {
   return (
       <TableContext.Provider value= {tableContext} >
         <EventContext.Provider value= {eventContext} >
-    <table border={1}>
+    <table 
+    border={1}
+    >
       <thread>
         <tr>
             <TableHeader 
@@ -105,7 +108,8 @@ export default function Table() {
         </tr>
       </thread>
       <tbody>
-        {toBeDisplayedData.map((person) => (
+        {
+        toBeDisplayedData.map((person) => (
         <TableRow
         key={person.phone}
         person={person}

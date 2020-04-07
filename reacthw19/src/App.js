@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './components/Header/header';
 import Table from './components/Table/table';
 import SearchInput from './components/Searchinput/searchinput';
-import { AppContext } from './AppContext';
-import { EventContext } from './components/Table/tableContext';
+import { AppContext, EventContext } from './AppContext';
+
 
 
 export default function App() {
