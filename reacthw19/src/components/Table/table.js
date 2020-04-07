@@ -7,6 +7,7 @@ import { EventContext, TableContext } from './tableContext';
 
 export default function Table() {
     const [sortBy, setSortBy] = React.useState();
+    const [sortOrder, setSortOrder] = React.useState();
   const handleTableHeaderClick = (event) => {
       const target = event.currentTarget;
       const id = target.getAttribute('id');
@@ -18,6 +19,7 @@ export default function Table() {
 
   const tableContext = {
       sortBy,
+      sortOrder
   }
 
   const eventContext = {
