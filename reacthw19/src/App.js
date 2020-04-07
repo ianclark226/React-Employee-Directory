@@ -7,14 +7,20 @@ import { EventContext } from './components/Table/tableContext';
 
 
 export default function App() {
-  const [searchText, setSearchText] = React.createContext();
+  const [searchText, setSearchText] = React.useState();
+
+  const handleSearchInputChange = (event) => {
+    console.log(event);
+
+    setSearchText('');
+  }
 
   const AppContext = {
     searchText,
   }
 
   const eventContext = {
-    setSearchText,
+    onSearchInputChange: handleSearchInputChange,
   }
 
   return (
