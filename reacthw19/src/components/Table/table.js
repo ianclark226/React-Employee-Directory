@@ -5,6 +5,7 @@ import TableRow from './components/TableRow/tableRow';
 import TableHeader from './components/TableHeader/tableHeader';
 import { EventContext, TableContext } from './tableContext';
 import { AppContext } from '../../AppContext';
+import "./styles.css"
 
 
 export default function Table() {
@@ -86,27 +87,26 @@ export default function Table() {
   return (
       <TableContext.Provider value= {tableContext} >
         <EventContext.Provider value= {eventContext} >
-    <table 
+    <table className="table"
     border={1}
+    
     >
-      <thread>
-        <tr>
-            <TableHeader 
-            text="Name"
-            
-            />
-             <TableHeader 
-            text="Email"
-            />
-             <TableHeader 
-            text="Phone"
-            />
-             <TableHeader 
-            text="Nationality"
-            />
-        
-        </tr>
-      </thread>
+      <thead>
+      <tr>
+							<TableHeader
+								text="Name"
+							/>
+							<TableHeader
+								text="Email"
+							/>
+							<TableHeader
+								text="Phone"
+							/>
+							<TableHeader
+								text="Nationality"
+							/>
+						</tr>
+      </thead>
       <tbody>
         {
         toBeDisplayedData.map((person) => (

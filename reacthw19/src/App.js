@@ -6,6 +6,7 @@ import { AppContext, EventContext } from './AppContext';
 
 
 
+
 export default function App() {
   const [searchText, setSearchText] = React.useState('');
 
@@ -24,6 +25,7 @@ export default function App() {
   }
 
   return (
+    <div className="navbar">
     <AppContext.Provider value = {appContext}>
       <EventContext.Provider value = {eventContext}>
     <div>
@@ -33,6 +35,7 @@ export default function App() {
     </div>
     </EventContext.Provider>
     </AppContext.Provider>
+    </div>
     
 
   );

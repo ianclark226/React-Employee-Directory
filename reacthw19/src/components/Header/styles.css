@@ -1,0 +1,15 @@
+.header {
+    background-color: crimson;
+    color: white;
+    height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding: 20px;
+  font-weight: bold;
+
+   
+    
+}
